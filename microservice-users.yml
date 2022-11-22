@@ -1,0 +1,24 @@
+server:
+  port: ${Port:8101}
+  tomcat:
+    max-threads: 10
+spring:
+  application:
+    name: microservice-user
+  jpa:
+    database: mysql
+    generate-ddl: true
+    show-sql: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/herosoft?characterEncoding=UTF-8
+    username: root
+    password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
