@@ -19,7 +19,7 @@ eureka:
 zuul:
   routes:
     service1:
-      path: /userservcie/** #如果这里的path userservice和serviceId不一样，则必须在后面加/**
+      path: /userservice/** #如果这里的path userservice和serviceId不一样，则必须在后面加/**
       serviceId: microservice-user
     service2:
       path: /movieservice/**
