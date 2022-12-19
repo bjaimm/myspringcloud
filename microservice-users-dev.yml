@@ -19,6 +19,25 @@ spring:
     port: 5672
     username: guest
     password: guest
+  kafka:
+    properties:
+      request.timeout.ms: 180000
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 0
+      acks: -1
+      batch:
+        size: 16384
+      linger: 1
+      buffer:
+        memory: 33554432
+    consumer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      enable-auto-commit: true
+      group-id: microservice-user-group
+      auto-offset-reset: latest
 eureka:
   client:
     service-url:
