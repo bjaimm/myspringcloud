@@ -49,3 +49,7 @@ eureka:
 
 token:
   secret: changedagain!!!!!!!okokok
+network:
+  kafka:
+    ip: localhost
+    port: 9092
