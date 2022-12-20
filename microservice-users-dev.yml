@@ -36,7 +36,7 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       enable-auto-commit: true
-      #group-id: microservice-user-group
+      group-id: microservice-user-group
       auto-offset-reset: latest
     bootstrap-servers: 127.0.0.1:9092
 eureka:
