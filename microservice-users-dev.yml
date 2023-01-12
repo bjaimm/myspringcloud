@@ -50,7 +50,7 @@ eureka:
 
 token:
   secret: changedagain!!!!!!!okokok
-network:
-  kafka:
-    ip: kafka
-    port: 9092
+#network:
+#  kafka:
+#    ip: kafka
+#    port: 9092
