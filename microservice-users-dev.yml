@@ -66,7 +66,7 @@ logging:
         user:
           mappers: debug
 token:
-  secret: changedfromconfigserver!!
+  secret: changedfromconfigserver!!xxxxx
 network:
   kafka:
     ip: kafka
