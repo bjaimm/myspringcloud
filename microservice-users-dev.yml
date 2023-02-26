@@ -64,10 +64,7 @@ eureka:
 management:
   security:
     enabled: false
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+
 mybatis-plus:
   mapper-locations: classpath:mappers/**/*.xml
 logging:
@@ -77,7 +74,7 @@ logging:
         user:
           mappers: debug
 token:
-  secret: changedfromconfigserver
+  secret: changedfromconfigserver!!
 network:
   kafka:
     ip: kafka
