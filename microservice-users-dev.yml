@@ -1,17 +1,24 @@
 server:
-  port: 8901
-  tomcat:
-    max-threads: 10
+  port: 8101
 spring:
   application:
     name: microservice-user
+  zipkin:
+    base-url: http://localhost:9411/
+    sleuth:
+      sampler:
+        probability: 1
   jpa:
     database: mysql
     generate-ddl: true
     show-sql: true
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/herosoft?characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/herosoft?characterEncoding=UTF-8
     username: root
     password: 123456
   rabbitmq:
@@ -19,6 +26,9 @@ spring:
     port: 5672
     username: guest
     password: guest
+    listener:
+      simple:
+        acknowledge-mode: manual
   kafka:
     properties:
       request.timeout.ms: 180000
@@ -42,15 +52,24 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:6868/eureka
+      defaultZone: http://localhost:6868/eureka
     fetch-registry: true
     register-with-eureka: true
   instance:
     prefer-ip-address: true
-
+mybatis-plus:
+  mapper-locations: classpath:mappers/**/*.xml
+logging:
+  level:
+    com:
+      herosoft:
+        user:
+          mappers: debug
 token:
   secret: changedagain!!!!!!!okokok
-#network:
-#  kafka:
-#    ip: kafka
-#    port: 9092
+network:
+  kafka:
+    ip: kafka
+    port: 9092
+
+
