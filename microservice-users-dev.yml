@@ -18,7 +18,7 @@ spring:
     database: 0
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/herosoft?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/microservice_user?characterEncoding=UTF-8
     username: root
     password: 123456
   rabbitmq:
@@ -66,7 +66,7 @@ logging:
         user:
           mappers: debug
 token:
-  secret: changedfromconfigserver!!xxxxx
+  secret: changedfromconfigserver!!
 network:
   kafka:
     ip: kafka
