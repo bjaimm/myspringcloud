@@ -27,8 +27,7 @@ spring:
       host: 127.0.0.1
       port: 27017
       username: hw
-      password:
-        - 123456
+      password: '123456'
       database: student
   rabbitmq:
     host: localhost
