@@ -73,6 +73,7 @@ logging:
       herosoft:
         user:
           mappers: debug
+  config: classpath:logback-spring.xml
 token:
   secret: changedfromconfigserver!!
 network:
