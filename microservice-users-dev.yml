@@ -4,7 +4,7 @@ spring:
   application:
     name: microservice-user
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: http://172.31.58.213:9411/
     sleuth:
       sampler:
         probability: 1
@@ -18,7 +18,7 @@ spring:
     database: 0
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/microservice_user?characterEncoding=UTF-8
+    url: jdbc:mysql://microservice-demo-db-instance.c2yfelj2zmfs.us-east-1.rds.amazonaws.com:3306/microservice_user?characterEncoding=UTF-8
     username: root
     password: 123456
   data:
@@ -30,7 +30,7 @@ spring:
       password: '123456'
       database: student
   rabbitmq:
-    host: localhost
+    host: 172.31.58.213
     port: 5672
     username: guest
     password: guest
@@ -60,7 +60,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:6868/eureka
+      defaultZone: http://172.31.48.139:6868/eureka
     fetch-registry: true
     register-with-eureka: true
   instance:
