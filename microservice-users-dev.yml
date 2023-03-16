@@ -20,7 +20,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://microservice-demo-db-instance.c2yfelj2zmfs.us-east-1.rds.amazonaws.com:3306/microservice_user?characterEncoding=UTF-8
     username: root
-    password: 123456
+    password: 12345678
   data:
     mongodb:
       authentication-database: admin
