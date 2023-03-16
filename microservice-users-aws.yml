@@ -13,18 +13,18 @@ spring:
     generate-ddl: true
     show-sql: true
   redis:
-    host: localhost
+    host: 172.31.58.134
     port: 6379
     database: 0
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://microservice-demo-db-instance.c2yfelj2zmfs.us-east-1.rds.amazonaws.com:3306/microservice_user?characterEncoding=UTF-8
+    url: jdbc:mysql://172.31.58.134:3306/microservice_user?characterEncoding=UTF-8
     username: root
     password: 12345678
   data:
     mongodb:
       authentication-database: admin
-      host: 127.0.0.1
+      host: 172.31.58.134
       port: 27017
       username: hw
       password: '123456'
@@ -56,7 +56,7 @@ spring:
       enable-auto-commit: true
       group-id: microservice-user-group
       auto-offset-reset: latest
-    bootstrap-servers: kafka:9092
+    bootstrap-servers: 172.31.58.134:9092
 eureka:
   client:
     service-url:
@@ -78,5 +78,5 @@ token:
   secret: changedfromconfigserver!!
 network:
   kafka:
-    ip: kafka
+    ip: 172.31.58.134
     port: 9092
