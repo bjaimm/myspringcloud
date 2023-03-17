@@ -1,0 +1,66 @@
+server:
+  port: 8201
+spring:
+  application:
+    name: microservice-product
+  zipkin:
+    base-url: http://172.31.58.213:9411/
+    sleuth:
+      sampler:
+        probability: 1
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.31.58.134:3306/microservice_product?characterEncoding=UTF-8
+    username: root
+    password: 12345678
+  rabbitmq:
+    host: 172.31.58.213
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: microservice-order-tx-group
+  service:
+    vgroup-mapping:
+      microservice-order-tx-group: seata-server
+  config:
+    type: nacos
+    nacos:
+      namespace: f0d4b8d1-dc3c-4c60-b60b-5d98dde84aa7
+      server-addr: 172.31.59.212:8848
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      data-id: seataServer.properties
+  registry:
+    type: eureka
+    eureka:
+      application: seata-server
+      service-url: http://172.31.48.139:6868/eureka
+      weight: 1
+mybatis-plus:
+  mapper-locations: classpath:mappers/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.31.48.139:6868/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+logging:
+  level:
+    com:
+      herosoft:
+        product:
+          mappers: debug
+  config: classpath:logback-spring.xml
