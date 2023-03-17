@@ -56,7 +56,7 @@ spring:
       enable-auto-commit: true
       group-id: microservice-user-group
       auto-offset-reset: latest
-    bootstrap-servers: 172.31.58.213:9092
+    bootstrap-servers: 172.31.11.133:9092
 eureka:
   client:
     service-url:
@@ -78,5 +78,5 @@ token:
   secret: changedfromconfigserver!!
 network:
   kafka:
-    ip: 172.31.58.213
+    ip: 172.31.11.133
     port: 9092
