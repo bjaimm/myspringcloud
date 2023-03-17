@@ -16,7 +16,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://172.31.58.134:3306/microservice_order?characterEncoding=UTF-8
     username: root
-    password: 123456
+    password: 12345678
   rabbitmq:
     host: 172.31.58.213
     port: 5672
