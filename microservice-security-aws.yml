@@ -1,0 +1,32 @@
+server:
+  port: 8401
+spring:
+  application:
+    name: microservice-security
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.31.58.134:3306/microservice_user?characterEncoding=UTF-8
+    username: root
+    password: 12345678
+  redis:
+    host: 172.31.58.134
+    port: 6379
+    database: 0
+  zipkin:
+    base-url: http://172.31.58.213:9411/
+    sleuth:
+      sampler:
+        probability: 1
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://172.31.48.139:6868/eureka
+  instance:
+    prefer-ip-address: true
+mybatis-plus:
+  mapper-locations: classpath:mappers/**/*.xml
+logging:
+  level:
+    root: info
