@@ -75,7 +75,7 @@ logging:
           mappers: debug
   config: classpath:logback-spring.xml
 token:
-  secret: changedfromconfigserver!!XXXXXXXXXX
+  secret: changedfromconfigserver!!TTTTTTT
 network:
   kafka:
     ip: 172.31.11.133
