@@ -1,0 +1,90 @@
+server:
+  port: 8302
+spring:
+  application:
+    name: microservice-order
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  zipkin:
+    base-url: http://localhost:9411
+    sleuth:
+      sampler:
+        probability: 1
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/microservice_order?characterEncoding=UTF-8
+    username: root
+    password: 123456
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirm-type: correlated
+    publisher-returns: true
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.application.name}-tx-group
+  service:
+    vgroup-mapping:
+      microservice-order-tx-group: seata-server
+  config:
+    type: nacos
+    nacos:
+      namespace: f0d4b8d1-dc3c-4c60-b60b-5d98dde84aa7
+      server-addr: localhost:8848
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      dataId: seataServer.properties
+  registry:
+    type: eureka
+    eureka:
+      application: seata-server
+      service-url: http://localhost:6868/eureka
+      weight: 1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6868/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+mybatis-plus:
+  mapper-locations: classpath:mappers/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com:
+      herosoft:
+        order:
+          mappers: debug
+  config: classpath:logback-spring.xml
+token:
+  secret: changedagain!!!!!!!okokok
+feign:
+  hystrix:
+    enabled: true
+#strategy设置为SEMAPHORE是解决XID在Feign调用中有Hystrix熔断处理时不能传递的问题，同时要结合FeignConfig中的逻辑
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeInMilliSeconds: 10000
+          strategy: SEMAPHORE
+
+threadpool:
+  corePoolSize: 5
+  maxPoolSize: 10
+  queueCapacity: 10
+  keepAliveSeconds: 5
+
+
+
