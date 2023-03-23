@@ -26,10 +26,10 @@ spring:
 seata:
   enabled: true
   application-id: ${spring.application.name}
-  tx-service-group: microservice-order-tx-group
+  tx-service-group: microservice-product-tx-group
   service:
     vgroup-mapping:
-      microservice-order-tx-group: seata-server
+      microservice-product-tx-group: seata-server
   config:
     type: nacos
     nacos:
