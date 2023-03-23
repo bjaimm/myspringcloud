@@ -34,7 +34,7 @@ seata:
   config:
     type: nacos
     nacos:
-      namespace: f0d4b8d1-dc3c-4c60-b60b-5d98dde84aa7
+      namespace: 98bdf680-1fd2-46fc-b5c2-5a69df0e98d9
       server-addr: localhost:8848
       group: SEATA_GROUP
       username: nacos
