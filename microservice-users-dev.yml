@@ -4,6 +4,8 @@ spring:
   application:
     name: microservice-user
   thyemleaf:
+    mode: HTML
+    content-type: text/html
     prefix: classpath:/templates/
     suffix: html
   zipkin:
