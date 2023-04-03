@@ -1,0 +1,82 @@
+server:
+  port: 8101
+spring:
+  application:
+    name: microservice-user
+  zipkin:
+    base-url: http://9.200.54.95:9411/
+    sleuth:
+      sampler:
+        probability: 1
+  jpa:
+    database: mysql
+    generate-ddl: true
+    show-sql: true
+  redis:
+    host: 9.200.54.95
+    port: 6379
+    database: 0
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://9.200.54.95:3306/microservice_user?characterEncoding=UTF-8
+    username: root
+    password: 12345678
+  data:
+    mongodb:
+      authentication-database: admin
+      host: 9.200.54.95
+      port: 27017
+      username: hw
+      password: '123456'
+      database: student
+  rabbitmq:
+    host: 9.200.54.95
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: manual
+  kafka:
+    properties:
+      request.timeout.ms: 180000
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 0
+      acks: 1
+      batch:
+        size: 16384
+      linger: 1
+      buffer:
+        memory: 33554432
+    consumer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      enable-auto-commit: true
+      group-id: microservice-user-group
+      auto-offset-reset: latest
+    bootstrap-servers: 9.200.54.95:9092
+eureka:
+  client:
+    service-url:
+      defaultZone: http://9.200.54.95:6868/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+mybatis-plus:
+  mapper-locations: classpath:mappers/**/*.xml
+logging:
+  level:
+    com:
+      herosoft:
+        user:
+          mappers: debug
+  config: classpath:logback-spring.xml
+token:
+  secret: changedfromconfigserver!!this is for dev branch edited2
+network:
+  kafka:
+    ip: 9.200.54.95
+    port: 9092
