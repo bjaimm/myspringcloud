@@ -4,7 +4,7 @@ spring:
   application:
     name: microservice-user
   zipkin:
-    base-url: http://9.200.54.95:9411/
+    base-url: http://9.245.156.131:9411/
     sleuth:
       sampler:
         probability: 1
@@ -13,24 +13,24 @@ spring:
     generate-ddl: true
     show-sql: true
   redis:
-    host: 9.200.54.95
+    host: 9.245.156.131
     port: 6379
     database: 0
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://9.200.54.95:3306/microservice_user?characterEncoding=UTF-8
+    url: jdbc:mysql://9.245.156.131:3306/microservice_user?characterEncoding=UTF-8
     username: root
     password: 123456
   data:
     mongodb:
       authentication-database: admin
-      host: 9.200.54.95
+      host: 9.245.156.131
       port: 27017
       username: hw
       password: '123456'
       database: student
   rabbitmq:
-    host: 9.200.54.95
+    host: 9.245.156.131
     port: 5672
     username: guest
     password: guest
@@ -56,11 +56,11 @@ spring:
       enable-auto-commit: true
       group-id: microservice-user-group
       auto-offset-reset: latest
-    bootstrap-servers: 9.200.54.95:9092
+    bootstrap-servers: 9.245.156.131:9092
 eureka:
   client:
     service-url:
-      defaultZone: http://9.200.54.95:6868/eureka
+      defaultZone: http://9.245.156.131:6868/eureka
     fetch-registry: true
     register-with-eureka: true
   instance:
@@ -78,5 +78,5 @@ token:
   secret: changedfromconfigserver!!this is for dev branch edited2
 network:
   kafka:
-    ip: 9.200.54.95
+    ip: 9.245.156.131
     port: 9092
