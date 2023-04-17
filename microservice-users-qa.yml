@@ -60,7 +60,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://9.197.4.240:6868/eureka
+      defaultZone: http://9.197.4.240:6868/eureka,http://9.197.4.241:6868/eureka
     fetch-registry: true
     register-with-eureka: true
   instance:

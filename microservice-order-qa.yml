@@ -1,16 +1,20 @@
 server:
-  port: 8201
+  port: 8302
 spring:
   application:
-    name: microservice-product
+    name: microservice-order
+  redis:
+    host: 9.197.4.240
+    port: 6379
+    database: 0
   zipkin:
-    base-url: http://9.197.4.240:9411/
+    base-url: http://9.197.4.240:9411
     sleuth:
       sampler:
         probability: 1
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://9.197.4.240:3306/microservice_product?characterEncoding=UTF-8
+    url: jdbc:mysql://9.197.4.240:3306/microservice_order?characterEncoding=UTF-8
     username: root
     password: 123456
   rabbitmq:
@@ -20,35 +24,28 @@ spring:
     password: guest
     publisher-confirm-type: correlated
     publisher-returns: true
-    listener:
-      simple:
-        acknowledge-mode: manual
 seata:
   enabled: true
   application-id: ${spring.application.name}
-  tx-service-group: microservice-product-tx-group
+  tx-service-group: ${spring.application.name}-tx-group
   service:
     vgroup-mapping:
-      microservice-product-tx-group: seata-server
+      microservice-order-tx-group: seata-server
   config:
     type: nacos
     nacos:
       namespace: 98bdf680-1fd2-46fc-b5c2-5a69df0e98d9
-      server-addr: 9.197.4.240:8848
+      server-addr: localhost:8848
       group: SEATA_GROUP
       username: nacos
       password: nacos
-      data-id: seataServer.properties
+      dataId: seataServer.properties
   registry:
     type: eureka
     eureka:
       application: seata-server
       service-url: http://9.197.4.240:6868/eureka,http://9.197.4.241:6868/eureka
       weight: 1
-mybatis-plus:
-  mapper-locations: classpath:mappers/**/*.xml
-  configuration:
-    map-underscore-to-camel-case: false
 eureka:
   client:
     service-url:
@@ -57,10 +54,37 @@ eureka:
     register-with-eureka: true
   instance:
     prefer-ip-address: true
+mybatis-plus:
+  mapper-locations: classpath:mappers/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 logging:
   level:
     com:
       herosoft:
-        product:
+        order:
           mappers: debug
   config: classpath:logback-spring.xml
+token:
+  secret: changedagain!!!!!!!okokok
+feign:
+  hystrix:
+    enabled: true
+#strategy设置为SEMAPHORE是解决XID在Feign调用中有Hystrix熔断处理时不能传递的问题，同时要结合FeignConfig中的逻辑
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeInMilliSeconds: 10000
+          strategy: SEMAPHORE
+
+threadpool:
+  corePoolSize: 5
+  maxPoolSize: 10
+  queueCapacity: 10
+  keepAliveSeconds: 5
+
+
+
